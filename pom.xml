@@ -196,6 +196,12 @@
     <profiles>
         <profile>
             <id>heroku</id>
+            <activation>
+                <property>
+                    <name>heroku</name>
+                </property>
+            </activation>
+            
             <properties>
                 <jham.packaging>jar</jham.packaging>
             </properties>
