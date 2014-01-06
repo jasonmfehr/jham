@@ -5,8 +5,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @XmlRootElement(name="users", namespace="http://www.github.com/jasonmfehr/jham/encryption")
 public class EncryptedValueTO {
 	//private String str;
@@ -14,7 +12,7 @@ public class EncryptedValueTO {
 	private List<Integer> value;
 	
 	@XmlElement(name="value")
- 	@JsonProperty("value")
+ 	//@JsonProperty("value")
 	public List<Integer> getValue() {
 		return this.value;
 	}

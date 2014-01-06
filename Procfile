@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* JHam
+web: java -cp target/classes:target/dependency/* org.jham.heroku.JHamHeroku
