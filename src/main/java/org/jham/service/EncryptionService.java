@@ -2,6 +2,7 @@ package org.jham.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +18,7 @@ import org.jham.transferobjects.KeyHolderTO;
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class EncryptionService {
 
+	private static final int MAX_RANDOM = 65535;
     @GET
     @Path("/gen/{clientIdentifier}")
     public EncryptedValueTO generateEncryptedPassword(@PathParam("clientIdentifier") String clientId) {
@@ -38,6 +40,6 @@ public class EncryptionService {
     @GET
     @Path("/randomkey/{clientIdentifier}")
     public KeyHolderTO generateRandomKey(@PathParam("clientIdentifier") String clientId) {
-    	return new KeyHolderTO(12345);
+    	return new KeyHolderTO(new Random(System.nanoTime()).nextInt(MAX_RANDOM));
     }
 }
