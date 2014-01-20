@@ -1,9 +1,13 @@
 package org.jham.encrypt;
 
+import javax.inject.Singleton;
+import javax.ws.rs.core.Feature;
+import javax.ws.rs.core.FeatureContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EncryptionHelper {
+public class EncryptionHelper implements Feature {
 	
 	private static final Logger logger = LoggerFactory.getLogger(EncryptionHelper.class);
 	
@@ -41,5 +45,10 @@ public class EncryptionHelper {
 		}
 		
 		return sb.toString();
+	}
+
+	@Override
+	public boolean configure(FeatureContext context) {
+		return true;
 	}
 }
