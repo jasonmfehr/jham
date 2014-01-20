@@ -4,8 +4,8 @@ import java.util.Random;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.jham.transferobjects.KeyHolderTO;
@@ -25,8 +25,8 @@ public class EncryptionService {
 	}
 	
     @GET
-    @Path("/randomkey/{clientId}")
-    public KeyHolderTO generateRandomKey(@PathParam("clientIdentifier") String clientId) {
+    @Path("/randomkey")
+    public KeyHolderTO generateRandomKey(@QueryParam("clientIdentifier") String clientId) {
     	return new KeyHolderTO(new Random(System.nanoTime()).nextInt(MAX_RANDOM));
     }
 }
