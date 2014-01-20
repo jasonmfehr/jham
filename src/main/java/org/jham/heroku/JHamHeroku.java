@@ -42,8 +42,7 @@ public class JHamHeroku extends HttpServlet {
         server = new Server(Integer.valueOf(webPort));
         context = new WebAppContext();
         
-        //TODO context root of jham in non-jetty containers
-        context.setContextPath("/jham");
+        context.setContextPath("/jham-web");
         context.setParentLoaderPriority(false);
         context.setResourceBase("src/main/webapp");
         context.setDescriptor("src/main/webapp/WEB-INF/web.xml");

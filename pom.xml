@@ -32,11 +32,6 @@
     
     <repositories>
         <repository>
-            <id>springsource-repo</id>
-            <name>SpringSource Repository</name>
-            <url>http://repo.springsource.org/release</url>
-        </repository>
-        <repository>
             <id>neo4j</id>
             <name>neo4j</name>
             <url>http://m2.neo4j.org/</url>
@@ -51,9 +46,6 @@
         <jham.jetty.version>8.1.14.v20131031</jham.jetty.version>
         <jham.logback.version>1.0.13</jham.logback.version>
         <jham.packaging>war</jham.packaging>
-        
-        <jham.spring.version>3.2.2.RELEASE</jham.spring.version>
-        <jham.jackson2.version>2.2.2</jham.jackson2.version>
     </properties>
 
     <dependencyManagement>
