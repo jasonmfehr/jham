@@ -17,7 +17,7 @@ public class JHamHeroku extends HttpServlet {
 	private static final String ENVIRONMENT_VAR = "PORT";
 	private static final String DEFAULT_PORT = "8080";
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(JHamHeroku.class);
+	private static final Logger logger = LoggerFactory.getLogger(JHamHeroku.class);
 
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,20 +29,19 @@ public class JHamHeroku extends HttpServlet {
         final WebAppContext context;
         String webPort;
         
-        //TODO logging
+        logger.debug("looking up server port from environment variable {}", ENVIRONMENT_VAR);
         webPort = System.getenv(ENVIRONMENT_VAR);
         if (webPort == null || webPort.isEmpty()) {
-        	LOGGER.debug("{} environment variable not specified, using default of {}", ENVIRONMENT_VAR, DEFAULT_PORT);
+        	logger.debug("{} environment variable not found, using default of {}", ENVIRONMENT_VAR, DEFAULT_PORT);
             webPort = DEFAULT_PORT;
-        }else{
-        	LOGGER.debug("Using port {} from environment variable {}", webPort, ENVIRONMENT_VAR);
         }
         
-        LOGGER.info("Starting Jetty server on port {}", webPort);
+        logger.info("Starting Jetty server on port {}", webPort);
         server = new Server(Integer.valueOf(webPort));
         context = new WebAppContext();
         
         //TODO context root of jham in non-jetty containers
+        //TODO put config in a jetty xml config file
         context.setContextPath("/jham");
         context.setParentLoaderPriority(false);
         context.setResourceBase("src/main/webapp");

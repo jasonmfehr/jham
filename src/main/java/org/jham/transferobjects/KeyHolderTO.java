@@ -6,6 +6,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="users", namespace="http://www.github.com/jasonmfehr/jham/keyholder")
 public class KeyHolderTO {
 
+	@XmlElement(name="key")
+	private Integer key;
+	
     public KeyHolderTO() {
         
     }
@@ -14,8 +17,6 @@ public class KeyHolderTO {
         setKey(key);
     }
     
-    @XmlElement(name="key")
-    private Integer key;
 
     public Integer getKey() {
         return key;

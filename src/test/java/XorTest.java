@@ -20,7 +20,7 @@ public class XorTest {
 		encryptedString[5] = (int) 'g' ^ 'y';
 	
 		this.printArray(encryptedString);
-		this.printArray(EncryptionHelper.encryptValue("string", "xorkey"));
+		//this.printArray(EncryptionHelper.encryptValue("string", "xorkey"));
 		
 	}
 	
@@ -30,7 +30,7 @@ public class XorTest {
 		String password = "changeme";
 		//System.out.println(EncryptionHelper.decryptValue(EncryptionHelper.encryptValue("foo", key), key));
 		
-		int[] encryptedFromServer = EncryptionHelper.encryptValue(password, key);
+		/*int[] encryptedFromServer = EncryptionHelper.encryptValue(password, key);
 		this.printArray(encryptedFromServer);
 		
 		String decryptedFromServer = EncryptionHelper.decryptValue(encryptedFromServer, key);
@@ -44,13 +44,13 @@ public class XorTest {
 		
 		String decryptedFromClient = EncryptionHelper.decryptValue(encryptedFromClient, key);
 		System.out.println(decryptedFromClient);
-		
 		System.out.println("---");
 		int[] xoredArray = new int[8];
 		for(int j=0; j<encryptedFromServer.length; j++){
 			xoredArray[j] = encryptedFromServer[j] ^ encryptedFromClient[j];
 		}
 		this.printArray(xoredArray);
+		 */
 	}
 	
 	private String reverse(String val) {

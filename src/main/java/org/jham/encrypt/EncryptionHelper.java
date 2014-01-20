@@ -1,12 +1,23 @@
 package org.jham.encrypt;
 
-public final class EncryptionHelper {
-	
-	private EncryptionHelper() {
-		
-	}
+import javax.annotation.ManagedBean;
 
-	public static int[] encryptValue(String val, String key) {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@ManagedBean
+public class EncryptionHelper {
+	
+	private static final Logger logger = LoggerFactory.getLogger(EncryptionHelper.class);
+	
+	public EncryptionHelper() {
+		logger.info("EncryptionHelper ctor called");
+	}
+	/*private EncryptionHelper() {
+		
+	}*/
+
+	public /*static*/ int[] encryptValue(String val, String key) {
 		int[] encryptedVal = new int[val.length()];
 		int keyPos = 0;
 		
@@ -22,7 +33,7 @@ public final class EncryptionHelper {
 		return encryptedVal;
 	}
 	
-	public static String decryptValue(int[] val, String key) {
+	public /*static*/ String decryptValue(int[] val, String key) {
 		StringBuilder sb = new StringBuilder();
 		int keyPos = 0;
 		
