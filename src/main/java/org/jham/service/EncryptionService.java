@@ -15,6 +15,7 @@ import org.jham.encrypt.EncryptionHelper;
 import org.jham.transferobjects.KeyHolderTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Path("/encrypt")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -24,6 +25,7 @@ public class EncryptionService {
 	private static final int MAX_RANDOM = 65535;
 	private static final Logger logger = LoggerFactory.getLogger(EncryptionService.class);
 	
+	@Autowired
 	private EncryptionHelper helper;
 	
 	public EncryptionService(@Context ServletContext context) {

@@ -32,6 +32,11 @@
     
     <repositories>
         <repository>
+            <id>springsource-repo</id>
+            <name>SpringSource Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+        <repository>
             <id>neo4j</id>
             <name>neo4j</name>
             <url>http://m2.neo4j.org/</url>
@@ -46,6 +51,7 @@
         <jham.jetty.version>8.1.14.v20131031</jham.jetty.version>
         <jham.logback.version>1.0.13</jham.logback.version>
         <jham.packaging>war</jham.packaging>
+        <jham.spring.version>3.2.6.RELEASE</jham.spring.version>
     </properties>
 
     <dependencyManagement>
@@ -95,6 +101,27 @@
         <dependency>
 		    <groupId>org.glassfish.jersey.ext</groupId>
 		    <artifactId>jersey-spring3</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${jham.spring.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${jham.spring.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${jham.spring.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${jham.spring.version}</version>
 		</dependency>
         
         <dependency>
