@@ -2,7 +2,8 @@ package org.jham.service;
 
 import java.util.Random;
 
-import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,17 +19,19 @@ import org.jham.transferobjects.EncryptedValueTO;
 import org.jham.transferobjects.KeyHolderTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Path("/encrypt")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Singleton
 public class EncryptionService {
 
 	private static final Logger logger = LoggerFactory.getLogger(EncryptionService.class);
 
-	@Inject
+	@Autowired
 	private EncryptionHelper encryptionHelper;
-
-	public EncryptionService() {
+	
+	public EncryptionService(@Context ServletContext context) {
 		logger.info("EncryptionService ctor called");
 	}
 	

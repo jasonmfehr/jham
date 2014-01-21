@@ -1,5 +1,7 @@
-import org.jham.encrypt.EncryptionHelper;
 import org.junit.Test;
+
+import org.junit.Test;
+
 
 
 public class XorTest {
@@ -30,7 +32,8 @@ public class XorTest {
 		String password = "changeme";
 		//System.out.println(EncryptionHelper.decryptValue(EncryptionHelper.encryptValue("foo", key), key));
 		
-		/*int[] encryptedFromServer = EncryptionHelper.encryptValue(password, key);
+		/*
+		int[] encryptedFromServer = EncryptionHelper.encryptValue(password, key);
 		this.printArray(encryptedFromServer);
 		
 		String decryptedFromServer = EncryptionHelper.decryptValue(encryptedFromServer, key);
@@ -50,7 +53,7 @@ public class XorTest {
 			xoredArray[j] = encryptedFromServer[j] ^ encryptedFromClient[j];
 		}
 		this.printArray(xoredArray);
-		 */
+		*/
 	}
 	
 	private String reverse(String val) {

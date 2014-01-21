@@ -1,12 +1,14 @@
 package org.jham.encrypt;
 
-import javax.annotation.ManagedBean;
+import javax.ws.rs.core.Feature;
+import javax.ws.rs.core.FeatureContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-@ManagedBean
-public class EncryptionHelper {
+@Component
+public class EncryptionHelper implements Feature {
 	
 	private static final Logger logger = LoggerFactory.getLogger(EncryptionHelper.class);
 	
@@ -47,5 +49,10 @@ public class EncryptionHelper {
 		}
 		
 		return sb.toString();
+	}
+
+	@Override
+	public boolean configure(FeatureContext context) {
+		return true;
 	}
 }

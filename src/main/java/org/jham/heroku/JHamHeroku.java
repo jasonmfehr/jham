@@ -42,7 +42,7 @@ public class JHamHeroku extends HttpServlet {
         
         //TODO context root of jham in non-jetty containers
         //TODO put config in a jetty xml config file
-        context.setContextPath("/jham");
+        context.setContextPath("/jham-web");
         context.setParentLoaderPriority(false);
         context.setResourceBase("src/main/webapp");
         context.setDescriptor("src/main/webapp/WEB-INF/web.xml");
