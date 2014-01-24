@@ -3,7 +3,7 @@ package org.jham.transferobjects;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="users", namespace="http://www.github.com/jasonmfehr/jham/keyholder")
+@XmlRootElement(name="keyholder")
 public class KeyHolderTO {
 
 	@XmlElement(name="key")

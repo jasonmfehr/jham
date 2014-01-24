@@ -1,25 +1,25 @@
 package org.jham.encrypt;
 
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.FeatureContext;
+import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EncryptionHelper implements Feature {
+public class EncryptionHelper {
 	
-	private static final Logger logger = LoggerFactory.getLogger(EncryptionHelper.class);
-	
-	public EncryptionHelper() {
-		logger.info("EncryptionHelper ctor called");
-	}
-	/*private EncryptionHelper() {
+	public Integer randomInt() {
+		Random r = new Random(System.nanoTime());
+		int randomInt;
 		
-	}*/
+		r = new Random(System.nanoTime());
+		randomInt = r.nextInt();
+		
+		return Integer.valueOf(randomInt);
+	}
 
-	public /*static*/ int[] encryptValue(String val, String key) {
+	//TODO remove old experimental code
+	/*
+	public int[] encryptValue(String val, String key) {
 		int[] encryptedVal = new int[val.length()];
 		int keyPos = 0;
 		
@@ -35,7 +35,7 @@ public class EncryptionHelper implements Feature {
 		return encryptedVal;
 	}
 	
-	public /*static*/ String decryptValue(int[] val, String key) {
+	public String decryptValue(int[] val, String key) {
 		StringBuilder sb = new StringBuilder();
 		int keyPos = 0;
 		
@@ -50,9 +50,6 @@ public class EncryptionHelper implements Feature {
 		
 		return sb.toString();
 	}
+	*/
 
-	@Override
-	public boolean configure(FeatureContext context) {
-		return true;
-	}
 }
