@@ -7,10 +7,11 @@
         </encoder>
     </appender>
     
-    <logger name="org.eclipse.jetty" level="INFO" />
-    <logger name="org.jham.heroku" level="DEBUG" />
+    <logger name="org.jham" level="DEBUG" />
     
-    <root level="DEBUG">
+    <logger name="org.springframework" level="WARN" />
+    
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
     

@@ -25,9 +25,9 @@
     </issueManagement>
     
     <scm>
-        <connection>https://github.com/jasonmfehr/jham</connection>
         <url>https://github.com/jasonmfehr/jham</url>
-        <developerConnection>scm:git:git@github.com:jasonmfehr/jham.git</developerConnection>
+        <connection>scm:git:https://github.com/jasonmfehr/jham.git</connection>
+        <developerConnection>scm:git:https://github.com/jasonmfehr/jham.git</developerConnection>
     </scm>
     
     <repositories>
@@ -67,29 +67,41 @@
     </dependencyManagement>
     
     <dependencies>
+        <!-- logging dependencies -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${jham.logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.5</version>
         </dependency>
+        
+        <!-- javaee dependencies -->
+        <!-- 
+            These are provided so that IDEs will include them in the build path
+            thus preventing compile errors in the org.jham.heroku package.
+            
+            When the heroku profile is activated, it copies all provided and 
+            compile scoped dependencies for inclusion on the classpath when 
+            running on heroku.
+         -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>${jham.jetty.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty.aggregate</groupId>
             <artifactId>jetty-webapp</artifactId>
             <version>${jham.jetty.version}</version>
+            <scope>provided</scope>
         </dependency>
         
+        <!-- jax-rs jersey dependencies -->
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
@@ -103,6 +115,7 @@
             <artifactId>jersey-spring3</artifactId>
         </dependency>
         
+        <!-- spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -112,6 +125,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${jham.spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -125,15 +144,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${jham.spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${jham.spring.version}</version>
         </dependency>
+        
+        <!-- database dependencies -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -145,10 +160,24 @@
             <version>9.3-1100-jdbc4</version>
         </dependency>
         
+        <!-- test dependencies -->
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${jham.logback.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${jham.spring.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     
@@ -160,6 +189,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
+                    <warName>${project.artifactId}</warName>
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -170,6 +200,7 @@
                             <maven-version>${project.version}</maven-version>
                         </manifestEntries>
                     </archive>
+                   <packagingExcludes>WEB-INF/classes/org/jham/heroku/**/*.class</packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -322,6 +353,7 @@
                         <artifactId>maven-jar-plugin</artifactId>
                         <version>2.4</version>
                         <configuration>
+                            <finalName>${project.artifactId}</finalName>
                             <archive>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
@@ -348,6 +380,9 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <includeScope>compile</includeScope>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
