@@ -3,4 +3,9 @@ jdk:
   - openjdk7
 notification:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: CN7v11KR273IqmGRBrQHSJisBXVvrUJyPPVTZITGnbZ+qSDSDYvHIi8vpqkRmoVH0shQrtwt7VE7ETdxxJ9W8yxNNoVRfIKUNRQ7vJ5h0K7HdThmaGFtnNfjoNAamlWvkkUNc5tsltO9uSIqito6FfYplGn+wfoVWE7A5uj4uG8=
+  app: jham
 
