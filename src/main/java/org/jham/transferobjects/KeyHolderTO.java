@@ -6,7 +6,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="keyholder")
 public class KeyHolderTO {
 
-	@XmlElement(name="key")
 	private Integer key;
 	
     public KeyHolderTO() {
@@ -18,6 +17,7 @@ public class KeyHolderTO {
     }
     
 
+    @XmlElement(name="key")
     public Integer getKey() {
         return key;
     }
