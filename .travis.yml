@@ -1,13 +1,22 @@
 language: java
+
 jdk:
   - openjdk7
+
 notification:
   email: false
+
 deploy:
   provider: heroku
   api_key:
     secure: CN7v11KR273IqmGRBrQHSJisBXVvrUJyPPVTZITGnbZ+qSDSDYvHIi8vpqkRmoVH0shQrtwt7VE7ETdxxJ9W8yxNNoVRfIKUNRQ7vJ5h0K7HdThmaGFtnNfjoNAamlWvkkUNc5tsltO9uSIqito6FfYplGn+wfoVWE7A5uj4uG8=
   app: jham
-script:
-  mvn clean test jacoco:check jacoco:report coveralls:jacoco
 
+env:
+  global:
+    secure: BprH6Xo6l4vorL0Oy5TIpmi7jpzAvQQzSkwnrkE6cgPxTpdl0u2rcAA19IvG0YB7W0QL+ajxq2pWVyZuTechNYTj6DZydDIK/BiYd5BcQu9URXhNMVlVt58HIs8kCvvIYOLDv7qbsfe4PJ/+uKmFLSLWg2SLhECKgFG5lBbeJ5Q=
+
+script: mvn clean test jacoco:check jacoco:report coveralls:jacoco
+
+after_script:
+  - ./scripts/travis/runscope.sh
